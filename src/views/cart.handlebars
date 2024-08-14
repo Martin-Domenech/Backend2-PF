@@ -1,0 +1,25 @@
+<section class="cart">
+    <h1>carrito:</h1>
+    <p>cart: </p>
+    <table>
+            <tr class="columnas">
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th></th>
+            </tr>
+            
+            {{#each productos}}
+                <tr>
+                    <td>{{this.title}}</td>
+                    <td>{{this.price}}</td>
+                    <td>{{this.stock}}</td>
+                    <td><button class="btn-delete" delete-product="{{this._id}}">eliminar producto</button></td>
+                </tr>
+            {{/each}}
+        </table>
+        <br>
+        <button class="back-products">Ver mas productos</button>
+
+</section>
+<script src="/js/cart.js"></script>
