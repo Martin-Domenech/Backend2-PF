@@ -1,13 +1,21 @@
-const deleteProductCart = async (pid) => {
-    const response = await fetch(`/api/cart/${pid}`, {
+
+const deleteProductCart = async (pid, cid) => {
+    if (!cid) {
+        console.error('No se ha proporcionado un cardId')
+        return
+    }
+    if (!pid) {
+        console.error('No se ha proporcionado un productId')
+        return
+    }
+    const response = await fetch(`/api/cart/${cid}/product/${pid}`, {
         method: 'DELETE',
         headers:{
             'Content-Type': 'application/json'
         }
     })
     if (response.ok){
-        alert('Producto eliminado exitosamente')
-        window.location.href = '/api/cart'
+        window.location.href = '/cart'
     }else {
         const errorData = await response.json()
         console.error('Error:', errorData)
@@ -19,13 +27,9 @@ const deleteProductCart = async (pid) => {
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('.btn-delete').forEach(button => {
         button.addEventListener('click', () => {
-            const pid = button.getAttribute("delete-product")
-            console.log(pid)
-            deleteProductCart(pid)
+            const pid = button.getAttribute("delete-productId")
+            const cid = button.getAttribute("cid")
+            deleteProductCart(pid, cid)
         })
     })
-})
-
-document.querySelector('.back-products').addEventListener('click',() => {
-        window.location.href = '/api/products'
 })

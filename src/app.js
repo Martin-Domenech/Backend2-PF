@@ -7,9 +7,8 @@ import cartsRouter from "./routes/carts.router.js"
 import mongoose from "mongoose"
 import viewsRouter from "./routes/views.router.js"
 import cartModel from "./models/cart.model.js"
-
-
-
+import Handlebars from 'handlebars'
+import "./utils/handlebars-helpers.js"
 
 const app = express()
 const PORT = 8080
@@ -22,8 +21,11 @@ app.engine('handlebars', engine({
     runtimeOptions: {
         allowProtoPropertiesByDefault: true,
         allowProtoMethodsByDefault: true
-    }
+    },
+    helpers:Handlebars.helpers
 }))
+
+
 app.set('views', __dirname + '/views')
 app.set('view engine', 'handlebars')
 app.use(express.static(__dirname + '/public'))

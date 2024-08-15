@@ -1,16 +1,16 @@
 import { Router } from "express"
-import mongoose from "mongoose"
 import cartModel from "../models/cart.model.js"
 import productModel from "../models/product.model.js"
 
 const router = Router()
 
-router.put('/:pid', async (req,res) => {
+router.put('/:cid/product/:pid', async (req,res) => {
     try{
         const pid = req.params.pid
+        const cid = req.params.cid
         const product = await productModel.findById(pid)
 
-        let cart = await cartModel.findOne()
+        let cart = await cartModel.findById(cid)
         if (!cart) {
             return res.status(404).json({ message: 'Carrito no encontrado' })
         }
@@ -24,10 +24,11 @@ router.put('/:pid', async (req,res) => {
     }
 })
 
-router.delete('/:pid', async (req,res) => {
+router.delete('/:cid/product/:pid', async (req,res) => {
     try{
         const pid = req.params.pid
-        const cart = await cartModel.findOne()
+        const cid = req.params.cid
+        const cart = await cartModel.findById(cid)
         if (!cart) {
             return res.status(404).json({ message: "Carrito no encontrado" })
         }

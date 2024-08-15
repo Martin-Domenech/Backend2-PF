@@ -1,25 +1,24 @@
-<section class="cart">
-    <h1>carrito:</h1>
-    <p>cart: </p>
-    <table>
-            <tr class="columnas">
-                <th>Producto</th>
-                <th>Precio</th>
-                <th>Stock</th>
-                <th></th>
-            </tr>
-            
-            {{#each productos}}
-                <tr>
-                    <td>{{this.title}}</td>
-                    <td>{{this.price}}</td>
-                    <td>{{this.stock}}</td>
-                    <td><button class="btn-delete" delete-product="{{this._id}}">eliminar producto</button></td>
-                </tr>
-            {{/each}}
-        </table>
-        <br>
-        <button class="back-products">Ver mas productos</button>
-
-</section>
+<section class="contenido">
+        <div class="carrito">
+            <h1>Carrito de Compras</h1>
+            <div id="carrito-secction">
+                {{#each productos}}
+                    <div class="carrito-js">
+                        <div class="item">
+                            <img src="{{this.thumbnails}}" alt="img">
+                            <div class="info">
+                                <h3>{{this.title}}</h3>
+                                <p class="p-precio">{{this.description}}</p>
+                                <p>Precio: ${{this.price}}</p>
+                            </div>
+                            <button class="btn-delete" cid="{{../cid}}" delete-productId="{{this._id}}">Eliminar producto</button>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+            <div class="btns">
+                <form action="/" method="get"><button class="seguir-comprando" type="submit">Ver mas productos</button></form>
+            </div>
+        </div>
+    </section>
 <script src="/js/cart.js"></script>

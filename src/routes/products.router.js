@@ -24,6 +24,20 @@ router.post("/", async (req,res) => {
     }
 })
 
+router.delete("/:pid", async (req,res) => {
+    try {
+        const pid = req.params.pid;
+        const result = await productModel.findByIdAndDelete(pid);
+        if (result) {
+            res.status(200).json({ message: 'Producto eliminado con éxito' });
+        } else {
+            res.status(404).json({ message: 'Producto no encontrado' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Error al eliminar el producto', error });
+    }
+})
+
 
 
 export default router
