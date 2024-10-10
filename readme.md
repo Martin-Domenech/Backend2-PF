@@ -1,4 +1,7 @@
-# API Proyecto final Backend
+# Este repositorio esta en desarrollo, se acrualizara hasta el 21/10.
+
+
+# API Proyecto final Backend 2
 
 Este proyecto es una API para una tienda de vinos, desarrollada con Node.js, Express, y MongoDB. La API permite la gestión de productos, utilizando Mongoose para la interacción con la base de datos. El frontend está desarrollado con Handlebars y soporta paginación para mejorar la experiencia del usuario y el rendimiento de la pagina.
 
