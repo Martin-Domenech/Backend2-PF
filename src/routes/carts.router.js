@@ -1,9 +1,11 @@
 import { Router } from "express"
-import { addToCart, removeToCart } from "../controllers/cartController.js"
+import { addToCart, removeToCart, createTicket } from "../controllers/cartController.js"
+import { passportCall } from "../middlewares/passportCall.js"
 
 const router = Router()
 
-router.put('/:cid/product/:pid', addToCart)
-router.delete('/:cid/product/:pid', removeToCart)
+router.put('/:cid/product/:pid', passportCall('jwt'), addToCart)
+router.delete('/:cid/product/:pid', passportCall('jwt'), removeToCart)
+router.post('/:cid/purchase', passportCall('jwt'), createTicket)
 
 export default router

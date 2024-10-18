@@ -1,4 +1,7 @@
-import { getAllProducts, addNewProduct, removeProduct } from "../services/productService.js"
+import { getAllProducts, addNewProduct, removeProduct, updateProductService } from "../services/productService.js"
+import product from "../dao/classes/product.dao.js"
+
+const ProductDAO = new product()
 
 export const getAllProduct = async (req, res) => {
     try {
@@ -33,7 +36,7 @@ export const createProduct = async (req, res) => {
 export const deleteProduct = async (req, res) => {
     try {
         const pid = req.params.pid;
-        const result = await productService.removeProduct(pid)
+        const result = await removeProduct(pid)
         
         if (result) {
             res.status(200).json({ message: 'Producto eliminado con éxito' })
@@ -42,5 +45,41 @@ export const deleteProduct = async (req, res) => {
         }
     } catch (error) {
         res.status(500).json({ message: 'Error al eliminar el producto', error })
+    }
+}
+
+export const addProduct = (req, res) => {
+    res.render('addProduct')
+}
+
+export const renderEditProduct = async (req, res) => {
+    const { pid } = req.params
+    try {
+        const product = await ProductDAO.getProductById(pid)
+        if (!product) {
+            return res.status(404).send('Producto no encontrado')
+        }
+        res.render('editProduct', { product })
+    } catch (error) {
+        res.status(500).send('Error al cargar el producto')
+    }
+}
+
+
+export const updateProduct = async (req, res) => {
+    const { pid } = req.params;
+    const productUpdates = req.body;
+
+    try {
+        const updatedProduct = await updateProductService(pid, productUpdates);
+
+        if (!updatedProduct) {
+            return res.status(404).json({ message: 'Producto no encontrado' });
+        }
+
+        return res.status(200).json({ message: 'Producto actualizado con éxito', product: updatedProduct });
+    } catch (error) {
+        console.error('Error al actualizar el producto:', error.message);
+        return res.status(500).json({ message: 'Error al actualizar el producto', error: error.message });
     }
 }

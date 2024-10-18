@@ -15,6 +15,9 @@
     gap: 60px;
     color: #f2f2f2;
 }
+.navbar-nav{
+    gap: 30px;
+}
 
 .products-grids{
     max-width: 100px;
@@ -129,16 +132,32 @@ td {
     display: grid;
     justify-content: center;
     align-items: center;
+    color: #2b2b2b;
+}
+.form-product .container{
+
+    background-color: white;
+    margin: 50px 0 50px 0;
+    border-radius: 10px;
+    padding: 20px;
 }
 .title-form{
-    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    font-size: 2rem;
 }
 .contenido{
     display: flex;
     justify-content: center;
 }
-
-
+.btn-card{
+    margin-top: 5px;
+}
+.div-btns{
+    display: flex;
+    gap: 5px;
+}
 
 .carrito{
     display: inline-table;
@@ -171,6 +190,15 @@ td {
     padding: 5px;
     border-radius: 20px;
     box-shadow: 0 0 5px rgb(66, 66, 66);
+  }
+  .purchase{
+    max-width: 100px;
+  }
+  .total{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 30px;
   }
   .image-card{
     width: 100%; 
@@ -256,43 +284,43 @@ td {
     height: 100px;
 }
 .navtext:hover {
-    transform: scale(1.1); /* Escala el texto ligeramente */
+    transform: scale(1.1); 
 }
 
 
 
 
   .card {
-    width: 100%; /* Ajusta el ancho de la tarjeta */
-    max-width: 200px; /* Limita el ancho máximo de la tarjeta */
+    width: 100%; 
+    max-width: 200px;
     min-height: 300px;
-    height: auto; /* Fija la altura de la tarjeta */
+    height: auto; 
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Distribuye el contenido verticalmente */
+    justify-content: space-between;
 }
 
 .image-card {
-    height: 150px; /* Ajusta la altura de la imagen */
-    object-fit: cover; /* Asegura que la imagen ocupe todo el espacio disponible sin distorsión */
+    height: 150px; 
+    object-fit: cover; 
 }
 
 .card-body {
-    padding: 10px; /* Reduce el relleno interno de la tarjeta */
+    padding: 10px; 
     flex-grow: 1;
-    overflow: hidden; /* Oculta el contenido que se salga de la tarjeta */
+    overflow: hidden; 
 }
 
 .card-title {
-    font-size: 1em; /* Reduce el tamaño de la fuente del título */
+    font-size: 1em; 
     margin-bottom: 5px;
-    text-overflow: ellipsis; /* Trunca el texto si es demasiado largo */
-    white-space: nowrap; /* Evita que el texto se desborde a la siguiente línea */
-    overflow: hidden; /* Oculta el desbordamiento */
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+    overflow: hidden; 
 }
 
 .card-text {
-    font-size: 0.9em; /* Reduce el tamaño de la fuente del texto */
+    font-size: 0.9em; 
     margin-bottom: 5px;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -300,7 +328,148 @@ td {
 }
 
 .list-group-item {
-    font-size: 0.8em; /* Ajusta el tamaño del texto en la lista de elementos */
-    padding: 5px; /* Reduce el relleno interno de los elementos de la lista */
+    font-size: 0.8em; 
+    padding: 5px; 
 }
 
+.register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f7f9fc;
+    padding: 20px;
+}
+
+.register h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+}
+
+.register .form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.register .form label {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.register .form input,
+.register .form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.register .form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register .form button:hover {
+    background-color: #0056b3;  
+}
+
+.register a {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register a:hover {
+    text-decoration: underline;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    padding-top: 5%;
+    font-family: 'Noto Sans Georgian', sans-serif;;
+  }
+  
+  .login h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: white;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form label {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  .form input,
+  .form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form button:hover {
+    background-color: #0056b3;
+  }
+  .form span{
+    font-size: 0.8rem;
+    color: red;
+  }
+  
+  .login a {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .login a:hover {
+    text-decoration: underline;
+  }

@@ -10,11 +10,16 @@
                                 <h3>{{this.title}}</h3>
                                 <p class="p-precio">{{this.description}}</p>
                                 <p>Precio: ${{this.price}}</p>
+                                <p>Cantidad: {{this.quantity}}</p>
                             </div>
                             <button class="btn-delete" cid="{{../cid}}" delete-productId="{{this._id}}">Eliminar producto</button>
                         </div>
                     </div>
                 {{/each}}
+            </div>
+            <div class="total">
+                <h3>Total del carrito: ${{totalPrice}}</h3>
+                <button class="btn btn-success purchase" cart-id="{{cid}}" amount="{{totalPrice}}">Comprar</button>
             </div>
             <div class="btns">
                 <form action="/" method="get"><button class="seguir-comprando" type="submit">Ver mas productos</button></form>

@@ -1,0 +1,53 @@
+<form id="product-form"  class="form-product">
+    <div class="container">
+        <h1 class="title-form">Editar producto</h1>
+        <div class="row">
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Título:</label>
+                    <input type="text" class="form-control" id="title" name="title" required value="{{product.title}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Descripción:</label>
+                    <input type="text" class="form-control" id="description" name="description" required value="{{product.description}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="code" class="form-label">Código:</label>
+                    <input type="text" class="form-control" id="code" name="code" required value="{{product.code}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="price" class="form-label">Precio:</label>
+                    <input type="number" id="price" name="price" class="form-control" value="{{product.price}}">
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="stock" class="form-label">Stock:</label>
+                    <input type="number" id="stock" name="stock" class="form-control" value="{{product.stock}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="category" class="form-label">Categoría:</label>
+                    <input type="text" id="category" name="category" class="form-control" value="{{product.category}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="thumbnails" class="form-label">Thumbnails:</label>
+                    <input type="text" id="thumbnails" name="thumbnails" class="form-control" value="{{product.thumbnails}}">
+                </div>
+
+                <div class="mb-3 form-check">
+                    <label class="form-check-label" for="status">Estado</label>
+                    <input type="checkbox" id="status" name="status" class="form-check-input" {{#if product.status}}checked{{/if}}>
+                </div>
+            </div>
+        </div>
+        <button type="submit" product-id="{{product._id}}" class="btn btn-primary btn-form updateProductBtn">Modificar producto</button>
+    </div>
+</form>
+
+<script src="/js/updateProduct.js"></script>

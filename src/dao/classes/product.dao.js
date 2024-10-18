@@ -24,5 +24,12 @@ export default class Product {
         return await productModel.findById(pid);
     }
 
-
+    updateProduct = async (pid, productUpdates) => {
+        try {
+            const updatedProduct = await productModel.findByIdAndUpdate(pid, productUpdates, { new: true })
+            return updatedProduct
+        } catch (error) {
+            throw new Error('Error al actualizar el producto en el DAO')
+        }
+    }
 }

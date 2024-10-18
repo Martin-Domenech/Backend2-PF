@@ -38,11 +38,23 @@
                                 <li class="list-group-item">Categoria: {{this.category}}</li>
                                 <li class="list-group-item">Stock: {{this.stock}}</li>
                             </ul>
-                            <div class="card-body">
+                            <div class="card-body ">
                                 {{#if this.status}}
-                                    <button class="add-to-cart-btn btn btn-primary"  cart-id="{{../cid}}" product-id="{{this._id}}">Agregar al carrito</button>
+                                    {{#if ../isAuthenticated}}
+                                        <button class="add-to-cart-btn btn btn-primary btn-card" cart-id="{{../cid}}" product-id="{{this._id}}">Agregar al carrito</button>
+                                    {{else}}
+                                        <button type="button" class="btn btn-primary btn-card" disabled>Inicia sesión</button>
+                                    {{/if}}
                                 {{else}}
-                                    <button type="button" class="btn btn-primary" disabled>Agregar al carrito</button>
+                                    <button type="button" class="btn btn-primary btn-card" disabled>Agregar al carrito</button>
+                                {{/if}}
+                                {{#if (eq ../role 'admin')}}
+                                    <div class="div-btns">
+                                        <button class="deleteProduct btn btn-danger btn-card"  product-id="{{this._id}}">Eliminar</button>
+                                        <a href="/updateProduct/{{this._id}}">
+                                            <button class="btn btn-secondary btn-card">Editar</button>
+                                        </a>
+                                    </div>
                                 {{/if}}
                             </div>
                         </div>
@@ -84,57 +96,6 @@
         {{/if}}
     </div>
 </section>
-<form id="product-form" method="POST" action="/api/products" class="form-product">
-    <div class="container">
-        <h1 class="title-form">Agregar producto:</h1>
-        <div class="row">
-            <div class="col-6">
-            
-                <div class="mb-3">
-                    <label for="title" class="form-label">Título:</label>
-                    <input type="text" class="form-control" id="title" name="title" required aria-describedby="emailHelp">
-                </div>
 
-                <div class="mb-3">
-                    <label for="description" class="form-label">Descripción:</label>
-                    <input type="text" class="form-control" id="description" name="description" required aria-describedby="emailHelp">
-                </div>
-
-                <div class="mb-3">
-                    <label for="code" class="form-label">Código:</label>
-                    <input type="text" class="form-control"  id="code" name="code" required aria-describedby="emailHelp">
-                </div>
-
-                <div class="mb-3">
-                    <label for="price" class="form-label">Precio:</label>
-                    <input type="number" id="price" name="price" class="form-control" aria-describedby="emailHelp">
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="mb-3">
-                    <label for="stock" class="form-label">Stock:</label>
-                    <input type="number" id="stock" name="stock" required class="form-control" aria-describedby="emailHelp">
-                </div>
-
-                <div class="mb-3">
-                    <label for="category" class="form-label">Categoría:</label>
-                    <input type="text" id="category" name="category" required class="form-control" aria-describedby="emailHelp">
-                </div>
-
-                <div class="mb-3">
-                    <label ffor="thumbnails" class="form-label">Thumbnails:</label>
-                    <input type="text" id="thumbnails" name="thumbnails" class="form-control" aria-describedby="emailHelp">
-                </div>
-
-                <div class="mb-3 form-check">
-                    <label class="form-check-label" for="status">Estado</label>
-                    <input type="checkbox" id="status" name="status" class="form-check-input" checked>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary btn-form">Agregar producto</button>
-</form>
 <br><br><br>
 <script src="/js/index.js"></script>

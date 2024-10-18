@@ -52,3 +52,11 @@ export const addNewProduct = async (productData) => {
 export const removeProduct = async (pid) => {
     return await ProductDAO.deleteProduct(pid)
 }
+
+export const updateProductService = async (pid, productUpdates) => {
+    try {
+        return await ProductDAO.updateProduct(pid, productUpdates)
+    } catch (error) {
+        throw new Error('Error en el servicio de actualización de producto')
+    }
+}

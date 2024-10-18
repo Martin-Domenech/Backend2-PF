@@ -12,12 +12,21 @@ import config from './config/config.js'
 import cookieParser from 'cookie-parser'
 import passport from 'passport'
 import initializePassport from './config/passport.config.js'
+import sessionsRouter from './routes/sessions.router.js'
+import { authenticateToken } from "./middlewares/authenticateToken.js"
 
 const app = express()
 const PORT = config.port
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
+initializePassport()
+app.use(passport.initialize())
+app.use(cookieParser())
+
+app.use(authenticateToken)
+
 
 app.engine('handlebars', engine({
     runtimeOptions: {
@@ -32,12 +41,11 @@ app.set('views', __dirname + '/views')
 app.set('view engine', 'handlebars')
 app.use(express.static(__dirname + '/public'))
 
-app.use(cookieParser())
-initializePassport()
-app.use(passport.initialize())
+
 
 app.use("/api/products", productsRouter) 
 app.use("/api/cart", cartsRouter)
+app.use("/api/sessions", sessionsRouter)
 app.use("/", viewsRouter)
 
 
