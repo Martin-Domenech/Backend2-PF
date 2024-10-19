@@ -31,7 +31,7 @@ Este proyecto es una API para la gestión de un e-commerce desarrollado con **No
 - **Fetch API** en el frontend para consumir los endpoints de la API
 
 ## 🏗️ Estructura del proyecto
-
+```
 📦src
  ┣ 📂config
  ┃ ┣ 📜config.js
@@ -90,7 +90,7 @@ Este proyecto es una API para la gestión de un e-commerce desarrollado con **No
  ┣ 📜.DS_Store
  ┣ 📜app.js
  ┗ 📜utils.js
-
+```
 
 ### Pre-requisitos
 - **Node.js** (v14+)
