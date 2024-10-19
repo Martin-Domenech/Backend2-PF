@@ -1,6 +1,6 @@
 # 🛒 E-Commerce Backend API
 
-Este proyecto es una API para la gestión de un e-commerce desarrollado con **Node.js**, **Express**, **MongoDB**, **Mongoose**, **Handlebars** (migrando a React), **JWT** para autenticación, y **Nodemailer** para notificaciones por correo electrónico. Permite a los usuarios gestionar carritos de compra, productos, y realizar compras generando tickets.
+Este proyecto es una API para la gestión de un e-commerce desarrollado con **Node.js**, **Express**, **MongoDB**, **Mongoose**, **Handlebars** , **JWT** para autenticación, y **Nodemailer** para notificaciones por correo electrónico. Permite a los usuarios gestionar carritos de compra, productos, y realizar compras generando tickets.
 
 ## 📝 Notas
 
