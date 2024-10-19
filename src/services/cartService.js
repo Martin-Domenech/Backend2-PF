@@ -1,6 +1,7 @@
 import cart from '../dao/classes/cart.dao.js'
 import product from '../dao/classes/product.dao.js'
 import ticket from '../dao/classes/ticket.dao.js'
+import { sendTicketEmail } from './emailService.js'
 
 const CartDAO = new cart()
 const ProductDAO = new product()
@@ -83,12 +84,13 @@ export const removeProductFromCart = async (userID, pid) => {
 
 export const createTicketService = async (ticket, cid) => {
     try {
-        const result = await TicketDAO.createTicket(ticket)
-        if(!result){
+        const newTicket = await TicketDAO.createTicket(ticket)
+        if(!newTicket){
             throw new Error("Error al crear ticket")
         }
-        
         await CartDAO.clearCartById(cid)
+        await sendTicketEmail(ticket.purchaser, newTicket)
+
         return { success: true }
     } catch (error) {
         throw new Error("Error al crear ticket")
